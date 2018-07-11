@@ -23,6 +23,7 @@ const ArticleCard = ({ article }) =>
 
 ArticleCard.propTypes = {
   article: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     excerpt: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,

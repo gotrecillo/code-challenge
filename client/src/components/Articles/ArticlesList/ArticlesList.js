@@ -8,7 +8,9 @@ const Wrapper = styled.div`${styles.wrapper};`;
 
 const ArticlesList = ({ articles }) =>
   <Wrapper>
-    {articles.map(article => <ArticleCard article={article} />)}
+    {articles.map(article =>
+      <ArticleCard key={article.id} article={article} />
+    )}
   </Wrapper>;
 
 ArticlesList.propTypes = {
