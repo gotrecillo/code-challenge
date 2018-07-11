@@ -1,0 +1,17 @@
+version: "2"
+services:
+
+  api:
+    build: ./server/
+    volumes:
+      - './server:/usr/src/'
+      - './server/package.json:/usr/src/package.json'
+    links:
+      - mongo
+    ports:
+      - '4000:4000'
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"

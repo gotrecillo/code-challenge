@@ -29,10 +29,10 @@ yarn
 yarn start
 ```
 
-In the same way, and without closing server, you need to go to the repository root `code-challenge`, where you can find the client, and proceed with the installation and configuration.
+In the same way, and without closing server, you need to go to `code-challenge/client`, where you can find the client, and proceed with the installation and configuration.
 
 ```
-cd ..
+cd ../client
 yarn
 yarn start
 ```

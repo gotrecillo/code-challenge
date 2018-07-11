@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --require 'babel-register' server.js"
+    "start": "npx nodemon --require 'babel-register'"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "faker": "^3.1.0"
+    "faker": "^3.1.0",
+    "nodemon": "^1.18.0"
   }
 }
