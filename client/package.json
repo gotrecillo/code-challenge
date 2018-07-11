@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "styled-components": "^3.3.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -14,6 +16,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "raf": "^3.4.0",
     "react-scripts": "0.9.5"
   },
   "scripts": {
