@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
-import request from '../request';
-import { ARTICLES_QUERY } from '../queries';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { ArticlesList } from '../components/index';
+import { fetchArticles } from '../actions';
+
+const mapStateToProps = state => {
+  const { articles, fetching } = state.articles;
+
+  return { articles, fetching };
+};
+
+const mapDispatchToProps = dispatch => ({
+  fetchArticles: () => dispatch(fetchArticles.request()),
+});
 
 class ArticlesContainer extends Component {
-  state = { loading: true, articles: [] };
+  static propTypes = {
+    articles: PropTypes.array.isRequired,
+    fetching: PropTypes.bool.isRequired,
+    fetchArticles: PropTypes.func.isRequired,
+  };
 
   componentWillMount() {
-    request(ARTICLES_QUERY).then(response => {
-      this.setState({
-        articles: response.data.articles,
-        loading: false,
-      });
-    });
+    this.props.fetchArticles();
   }
 
   render() {
-    return <ArticlesList articles={this.state.articles} />;
+    return <ArticlesList articles={this.props.articles} />;
   }
 }
 
-export default ArticlesContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlesContainer);
