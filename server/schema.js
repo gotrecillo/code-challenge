@@ -4,7 +4,11 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLSchema,
+  GraphQLNonNull,
 } from 'graphql';
+
+import { Types } from 'mongoose';
+
 import db from './db';
 
 const articleType = new GraphQLObjectType({
@@ -43,6 +47,17 @@ const Query = new GraphQLObjectType({
       type: new GraphQLList(articleType),
       resolve() {
         return db.Article.find();
+      },
+    },
+    article: {
+      type: articleType,
+      args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLString),
+        },
+      },
+      resolve(root, { id }) {
+        return Types.ObjectId.isValid(id) ? db.Article.findById(id) : null;
       },
     },
   }),
