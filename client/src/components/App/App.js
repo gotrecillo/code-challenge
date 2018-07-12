@@ -5,6 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Header, Footer } from '../';
 import theme from '../../shared/theme';
 import ArticlesContainer from '../../containers/ArticlesContainer';
+import ArticleContainer from '../../containers/ArticleContainer';
 import styles from './App_style';
 import store from '../../store';
 
@@ -20,6 +21,7 @@ const App = () =>
           <Main>
             <Switch>
               <Route exact path="/" component={ArticlesContainer} />
+              <Route path="/:id" component={ArticleContainer} />
             </Switch>
           </Main>
           <Footer />

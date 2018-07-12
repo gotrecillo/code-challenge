@@ -14,7 +14,7 @@ const articlesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ARTICLES_REQUEST:
       return {
-        ...state,
+        articles: [],
         fetching: true,
         error: false,
       };

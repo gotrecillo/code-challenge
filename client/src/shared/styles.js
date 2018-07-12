@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { fromTheme } from './theme';
 
 export const flex = css`
   display: flex;
@@ -24,4 +25,16 @@ export const z4 = css`
 
 export const z5 = css`
   box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+`;
+
+
+export const card = css`
+  border-radius: 2px;
+  border: 1px solid transparent;
+  ${z2}
+  padding: 1rem;
+
+  &:hover {
+    border-color: ${fromTheme('primaryColor')};
+  }
 `;

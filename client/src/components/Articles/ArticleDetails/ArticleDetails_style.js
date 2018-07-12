@@ -1,19 +1,12 @@
 import { css } from 'styled-components';
 import { fromTheme } from '../../../shared/theme';
-import { z2 } from '../../../shared/styles';
+import { card } from '../../../shared/styles';
 
 const wrapper = css`
-  width: 300px;
-  border-radius: 2px;
-  border: 1px solid transparent;
-  ${z2}
-  padding: 1rem;
-  margin: 0.5rem;
+  ${card}
+  max-width: 900px;
+  margin: 0.5rem auto;
 
-  &:hover {
-    border-color: ${fromTheme('primaryColor')};
-    cursor: pointer;
-  }
 `;
 
 const title = css`
@@ -21,9 +14,10 @@ const title = css`
   font-weight: bolder;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  text-align: center;
 `;
 
-const excerpt = css`
+const content = css`
   text-align: justify;
 `;
 
@@ -36,6 +30,6 @@ const author = css`
 export default {
   wrapper,
   title,
-  excerpt,
+  content,
   author,
 };

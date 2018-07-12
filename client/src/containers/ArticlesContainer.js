@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ArticlesList } from '../components/index';
+import { ArticlesList, Spinner } from '../components/index';
 import { fetchArticles } from '../actions';
 
 const mapStateToProps = state => {
@@ -26,7 +26,13 @@ class ArticlesContainer extends Component {
   }
 
   render() {
-    return <ArticlesList articles={this.props.articles} />;
+    const { articles, fetching } = this.props;
+
+    if (fetching) {
+      return <Spinner />;
+    }
+
+    return <ArticlesList articles={articles} />;
   }
 }
 

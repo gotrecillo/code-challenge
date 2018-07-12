@@ -1,37 +1,37 @@
 import {
-  FETCH_ARTICLES_REQUEST,
-  FETCH_ARTICLES_DONE,
-  FETCH_ARTICLES_ERROR,
+  FETCH_ARTICLE_REQUEST,
+  FETCH_ARTICLE_DONE,
+  FETCH_ARTICLE_ERROR,
 } from '../actions/constants';
 
 const initialState = {
-  fetching: false,
+  fetching: true,
   error: false,
-  articles: [],
+  article: null,
 };
 
-const articlesReducer = (state = initialState, action) => {
+const articleReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_ARTICLES_REQUEST:
+    case FETCH_ARTICLE_REQUEST:
       return {
-        ...state,
+        article: null,
         fetching: true,
         error: false,
       };
 
-    case FETCH_ARTICLES_DONE:
+    case FETCH_ARTICLE_DONE:
       return {
         ...state,
         fetching: false,
-        articles: action.payload,
+        article: action.payload,
       };
 
-    case FETCH_ARTICLES_ERROR:
+    case FETCH_ARTICLE_ERROR:
       return {
         ...state,
         fetching: false,
         error: true,
-        articles: [],
+        article: null,
       };
 
     default:
@@ -39,4 +39,4 @@ const articlesReducer = (state = initialState, action) => {
   }
 };
 
-export default articlesReducer;
+export default articleReducer;

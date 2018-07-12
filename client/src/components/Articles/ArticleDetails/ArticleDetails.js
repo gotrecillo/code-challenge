@@ -1,32 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import styles from './ArticleCard_style';
+import styles from './ArticleDetails_style';
 
 const Wrapper = styled.div`${styles.wrapper};`;
 const Title = styled.h3`${styles.title};`;
-const Excerpt = styled.p`${styles.excerpt};`;
+const Content = styled.div`${styles.content};`;
 const Author = styled.p`${styles.author};`;
 
-const ArticleCard = ({ article }) =>
+const ArticleDetails = ({ article }) =>
   <Wrapper>
     <Title>
       {article.title}
     </Title>
-    <Excerpt>
-      {article.excerpt}
-    </Excerpt>
+    <Content>
+      {article.content}
+    </Content>
     <Author>
       {article.author}
     </Author>
   </Wrapper>;
 
-ArticleCard.propTypes = {
+ArticleDetails.propTypes = {
   article: PropTypes.shape({
-    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    excerpt: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
   }),
 };
-export default ArticleCard;
+export default ArticleDetails;
