@@ -1,32 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import styles from './ArticleCard_style';
+import styles from './NotFound_style';
 
 const Wrapper = styled.div`${styles.wrapper};`;
-const Title = styled.h3`${styles.title};`;
-const Excerpt = styled.p`${styles.excerpt};`;
-const Author = styled.p`${styles.author};`;
+const Text = styled.h3`${styles.text};`;
 
-const ArticleCard = ({ article }) =>
+const NotFound = ({
+  text = 'The page that you are looking for does not exist',
+}) =>
   <Wrapper>
-    <Title>
-      {article.title}
-    </Title>
-    <Excerpt>
-      {article.excerpt}
-    </Excerpt>
-    <Author>
-      {article.author}
-    </Author>
+    <Text>
+      {text}
+    </Text>
   </Wrapper>;
 
-ArticleCard.propTypes = {
-  article: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    excerpt: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-  }),
+NotFound.propTypes = {
+  text: PropTypes.string,
 };
-export default ArticleCard;
+export default NotFound;
