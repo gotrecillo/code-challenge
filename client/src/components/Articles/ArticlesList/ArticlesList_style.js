@@ -3,8 +3,13 @@ import { flex } from '../../../shared/styles';
 
 const wrapper = css`
   ${flex}
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 1rem;
+
+  &:after {
+    content: "";
+    flex: auto;
+  }
 `;
 
 export default {
