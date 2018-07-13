@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 import { fromTheme } from '../../../shared/theme';
-import { card } from '../../../shared/styles';
+import { card, flex } from '../../../shared/styles';
 
 const wrapper = css`
   ${card}
@@ -27,9 +27,16 @@ const author = css`
   text-align: right;
 `;
 
+const actions = css`
+  margin-top: 2rem;
+  ${flex}
+  justify-content: flex-end;
+`;
+
 export default {
   wrapper,
   title,
   content,
   author,
+  actions,
 };

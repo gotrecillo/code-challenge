@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchArticle } from '../actions';
+import { fetchArticle, deleteArticle } from '../actions';
 import { ArticleDetails, NotFound, Spinner } from '../components';
 
 const mapStateToProps = state => {
-  const { article, fetching } = state.article;
+  const { article, fetching, deleting } = state.article;
 
-  return { article, fetching };
+  return { article, fetching, deleting };
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchArticle: id => dispatch(fetchArticle.request(id)),
+  deleteArticle: id => dispatch(deleteArticle.request(id)),
 });
 
 class ArticleContainer extends Component {
@@ -23,7 +24,9 @@ class ArticleContainer extends Component {
       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     }),
     fetching: PropTypes.bool.isRequired,
+    deleting: PropTypes.bool.isRequired,
     fetchArticle: PropTypes.func.isRequired,
+    deleteArticle: PropTypes.func.isRequired,
   };
 
   componentWillMount() {
@@ -32,7 +35,7 @@ class ArticleContainer extends Component {
   }
 
   render() {
-    const { fetching, article } = this.props;
+    const { fetching, article, deleteArticle, deleting } = this.props;
 
     if (fetching) {
       return <Spinner />;
@@ -44,7 +47,13 @@ class ArticleContainer extends Component {
       );
     }
 
-    return <ArticleDetails article={article} />;
+    return (
+      <ArticleDetails
+        article={article}
+        deleteArticle={deleteArticle}
+        deleting={deleting}
+      />
+    );
   }
 }
 

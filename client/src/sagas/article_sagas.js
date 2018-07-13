@@ -1,8 +1,12 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
+import { push } from 'connected-react-router';
 import api from '../api';
-import { fetchArticle } from '../actions';
-import { FETCH_ARTICLE_REQUEST } from '../actions/constants';
+import { fetchArticle, deleteArticle } from '../actions';
+import {
+  DELETE_ARTICLE_REQUEST,
+  FETCH_ARTICLE_REQUEST,
+} from '../actions/constants';
 
 export function* fetchArticleSaga(action) {
   try {
@@ -15,6 +19,18 @@ export function* fetchArticleSaga(action) {
   }
 }
 
+export function* deleteArticleSaga(action) {
+  try {
+    yield call(delay, 1000);
+    const article = yield call(api.deleteArticle, action.payload);
+    yield put(deleteArticle.done(article));
+    yield put(push('/'));
+  } catch (error) {
+    yield put(deleteArticle.error());
+  }
+}
+
 export default function* articlesSaga() {
   yield takeLatest(FETCH_ARTICLE_REQUEST, fetchArticleSaga);
+  yield takeLatest(DELETE_ARTICLE_REQUEST, deleteArticleSaga);
 }

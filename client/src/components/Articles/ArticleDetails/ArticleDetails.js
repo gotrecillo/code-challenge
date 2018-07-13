@@ -7,9 +7,10 @@ import Button from '../../Button/Button';
 const Wrapper = styled.div`${styles.wrapper};`;
 const Title = styled.h3`${styles.title};`;
 const Content = styled.div`${styles.content};`;
+const Actions = styled.div`${styles.actions};`;
 const Author = styled.p`${styles.author};`;
 
-const ArticleDetails = ({ article }) =>
+const ArticleDetails = ({ article, deleteArticle, deleting }) =>
   <Wrapper>
     <Title>
       {article.title}
@@ -20,14 +21,24 @@ const ArticleDetails = ({ article }) =>
     <Author>
       {article.author}
     </Author>
-    <Button label="Delete" onClick={console.log}/>
+    <Actions>
+      <Button
+        variant="danger"
+        label={deleting ? 'Deleting...' :'Delete'}
+        disabled={deleting}
+        onClick={() => deleteArticle(article.id)}
+      />
+    </Actions>
   </Wrapper>;
 
 ArticleDetails.propTypes = {
   article: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
   }),
+  deleteArticle: PropTypes.func.isRequired,
+  deleting: PropTypes.bool.isRequired,
 };
 export default ArticleDetails;

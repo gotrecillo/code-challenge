@@ -5,8 +5,8 @@ import style from './Button_style';
 
 const Wrapper = styled.button`${style};`;
 
-const Button = ({ label, onClick }) =>
-  <Wrapper onClick={onClick}>
+const Button = ({ label, ...otherProps }) =>
+  <Wrapper {...otherProps}>
     <span>
       {label}
     </span>
@@ -14,7 +14,7 @@ const Button = ({ label, onClick }) =>
 
 Button.propTypes = {
   label: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+  variant: PropTypes.oneOf(['danger', 'warning', 'info']),
 };
 
 export default Button;
