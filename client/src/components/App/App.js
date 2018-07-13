@@ -1,20 +1,21 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import styled, { ThemeProvider } from 'styled-components';
 import { Header, Footer } from '../';
 import theme from '../../shared/theme';
 import ArticlesContainer from '../../containers/ArticlesContainer';
 import ArticleContainer from '../../containers/ArticleContainer';
 import styles from './App_style';
-import store from '../../store';
+import store, { history } from '../../store';
 
 const Wrapper = styled.div`${styles.wrapper};`;
 const Main = styled.main`${styles.main};`;
 
 const App = () =>
-  <BrowserRouter>
-    <Provider store={store}>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
       <ThemeProvider theme={theme}>
         <Wrapper>
           <Header />
@@ -27,7 +28,7 @@ const App = () =>
           <Footer />
         </Wrapper>
       </ThemeProvider>
-    </Provider>
-  </BrowserRouter>;
+    </ConnectedRouter>
+  </Provider>;
 
 export default App;
