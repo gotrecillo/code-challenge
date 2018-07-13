@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import styles from './ArticleDetails_style';
+import Button from '../../Button/Button';
 
 const Wrapper = styled.div`${styles.wrapper};`;
 const Title = styled.h3`${styles.title};`;
@@ -19,6 +20,7 @@ const ArticleDetails = ({ article }) =>
     <Author>
       {article.author}
     </Author>
+    <Button label="Delete" onClick={console.log}/>
   </Wrapper>;
 
 ArticleDetails.propTypes = {
