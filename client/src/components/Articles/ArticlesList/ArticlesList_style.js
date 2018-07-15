@@ -12,6 +12,11 @@ const wrapper = css`
   }
 `;
 
+const actions = css`
+  padding: 1rem 0 0 1.5rem;
+`;
+
 export default {
   wrapper,
+  actions,
 };
