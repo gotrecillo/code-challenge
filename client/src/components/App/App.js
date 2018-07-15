@@ -5,8 +5,11 @@ import { ConnectedRouter } from 'connected-react-router';
 import styled, { ThemeProvider } from 'styled-components';
 import { Header, Footer } from '../';
 import theme from '../../shared/theme';
-import ArticlesContainer from '../../containers/ArticlesContainer';
-import ArticleContainer from '../../containers/ArticleContainer';
+import {
+  ArticlesContainer,
+  ArticleContainer,
+  CreateArticleContainer,
+} from '../../containers';
 import styles from './App_style';
 import store, { history } from '../../store';
 
@@ -22,6 +25,7 @@ const App = () =>
           <Main>
             <Switch>
               <Route exact path="/" component={ArticlesContainer} />
+              <Route path="/create" component={CreateArticleContainer} />
               <Route path="/:id" component={ArticleContainer} />
             </Switch>
           </Main>
