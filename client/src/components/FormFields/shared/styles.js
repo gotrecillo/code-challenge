@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { fromTheme } from '../../shared/theme';
+import { fromTheme } from '../../../shared/theme';
 
 const wrapper = css`
   position: relative; 
@@ -16,7 +16,7 @@ const greyBar = css`
     content:'';
     height: 1px; 
     width: 100%;
-    bottom: 1px; 
+    bottom: -1px; 
     position: absolute;
     
     background: #757575;  
@@ -31,13 +31,13 @@ const colorBar = css`
     content:'';
     height: 2px; 
     width: 0;
-    bottom: 1px; 
+    bottom: -2px; 
     position: absolute;
     background: ${fromTheme('primaryColor')}; 
     transition: 0.2s ease all; 
   }
 
-  input:focus ~ &:before {
+  *:focus ~ &:before {
     width: 100%;
   }
 `;
@@ -48,6 +48,7 @@ const input = css`
   display: block;
   width: 100%;
   border: none;
+  resize: none;
 
   &:focus {
     outline:none;
@@ -64,8 +65,8 @@ const label = css`
   top: 10px;
   transition: 0.2s ease all;
 
-  // input:valid is a hack to make it behave like material inputs
-  input:focus ~ &, input:valid ~ & {
+  // *:valid is a hack to make it behave like material inputss
+  *:focus ~ &, *:valid ~ & {
     top:-20px;
     font-size:14px;
     color: ${fromTheme('primaryColor')};
@@ -76,7 +77,7 @@ const helpText = css`
   color: #999; 
   font-size: 0.9rem;
   position: relative;
-  top: 2px;
+  top: 4px;
 `;
 
 export default {
