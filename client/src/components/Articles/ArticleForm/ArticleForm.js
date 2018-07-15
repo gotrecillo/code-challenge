@@ -53,6 +53,13 @@ class ArticleForm extends Component {
     };
   };
 
+  changeCheckbox = key => {
+    return e => {
+      const article = { ...this.state.article, [key]: e.target.checked };
+      this.setState({ article });
+    };
+  };
+
   submit = () => {
     this.props.onSubmit(this.state.article);
   };
@@ -98,8 +105,8 @@ class ArticleForm extends Component {
         <CheckboxField
           id="published"
           label="Published"
-          value={published}
-          onChange={this.change('published')}
+          checked={published}
+          onChange={this.changeCheckbox('published')}
         />
         <Actions>
           <LinkWrap to="/">

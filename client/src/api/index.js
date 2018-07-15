@@ -1,6 +1,6 @@
 import request from './request';
 import { ARTICLES_QUERY, ARTICLE_QUERY } from './queries';
-import { DELETE_ARTICLE_MUTATION } from './mutation';
+import {CREATE_ARTICLE_MUTATION, DELETE_ARTICLE_MUTATION} from './mutation';
 
 const fetchArticles = () =>
   request(ARTICLES_QUERY).then(
@@ -16,7 +16,13 @@ const fetchArticle = id =>
 
 const deleteArticle = id =>
   request(DELETE_ARTICLE_MUTATION(id)).then(
-    response => response.data.article,
+    response => response.data.deleteArticle,
+    error => error
+  );
+
+const createArticle = article =>
+  request(CREATE_ARTICLE_MUTATION(article)).then(
+    response => response.data.createArticle,
     error => error
   );
 
@@ -24,4 +30,5 @@ export default {
   fetchArticles,
   fetchArticle,
   deleteArticle,
+  createArticle,
 };

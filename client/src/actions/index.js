@@ -8,6 +8,9 @@ import {
   DELETE_ARTICLE_DONE,
   DELETE_ARTICLE_REQUEST,
   DELETE_ARTICLE_ERROR,
+  CREATE_ARTICLE_DONE,
+  CREATE_ARTICLE_REQUEST,
+  CREATE_ARTICLE_ERROR,
 } from './constants';
 
 
@@ -27,4 +30,10 @@ export const deleteArticle = {
   request: payload => ({ type: DELETE_ARTICLE_REQUEST, payload }),
   done: payload => ({ type: DELETE_ARTICLE_DONE, payload }),
   error: () => ({ type: DELETE_ARTICLE_ERROR }),
+};
+
+export const createArticle = {
+  request: payload => ({ type: CREATE_ARTICLE_REQUEST, payload }),
+  done: payload => ({ type: CREATE_ARTICLE_DONE, payload }),
+  error: () => ({ type: CREATE_ARTICLE_ERROR }),
 };
