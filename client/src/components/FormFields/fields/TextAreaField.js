@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, TextArea } from './shared';
+import { FormGroup } from '../shared/index';
+import { TextAreaInput } from '../inputs/index';
 
 const TextAreaField = ({ label, helpText, ...otherProps }) =>
   <FormGroup
     label={label}
     helpText={helpText}
-    input={<TextArea {...otherProps} required />}
+    input={<TextAreaInput {...otherProps} required />}
   />;
 
 TextAreaField.propTypes = {
@@ -15,7 +16,7 @@ TextAreaField.propTypes = {
   rows: PropTypes.number,
 };
 
-TextArea.defaultProps = {
+TextAreaField.defaultProps = {
   rows: 5,
 };
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, Input } from './shared';
+import { FormGroup } from '../shared/index';
+import { TextInput } from '../inputs/index';
 
 const TextField = ({ label, helpText, ...otherProps }) =>
   <FormGroup
     label={label}
     helpText={helpText}
-    input={<Input {...otherProps} required />}
+    input={<TextInput {...otherProps} required />}
   />;
 
 TextField.propTypes = {
