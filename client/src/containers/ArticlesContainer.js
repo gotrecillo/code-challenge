@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 import { ArticlesList, Spinner } from '../components/index';
 import { fetchArticles } from '../actions';
 
@@ -12,6 +13,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchArticles: () => dispatch(fetchArticles.request()),
+  navigate: url => dispatch(push(url)),
 });
 
 class ArticlesContainer extends Component {
@@ -19,6 +21,7 @@ class ArticlesContainer extends Component {
     articles: PropTypes.array.isRequired,
     fetching: PropTypes.bool.isRequired,
     fetchArticles: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
   };
 
   componentWillMount() {
@@ -26,13 +29,13 @@ class ArticlesContainer extends Component {
   }
 
   render() {
-    const { articles, fetching } = this.props;
+    const { articles, fetching, navigate } = this.props;
 
     if (fetching) {
       return <Spinner />;
     }
 
-    return <ArticlesList articles={articles} />;
+    return <ArticlesList articles={articles} navigate={navigate} />;
   }
 }
 

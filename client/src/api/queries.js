@@ -1,4 +1,4 @@
-export const ARTICLES_QUERY = `{
+export const ARTICLES_QUERY = _ => `{
   articles {
     author
     excerpt
@@ -14,5 +14,7 @@ export const ARTICLE_QUERY = id => `{
     content
     tags
     title
+    excerpt
+    published
   }
 }`;

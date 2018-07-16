@@ -1,34 +1,24 @@
 import request from './request';
 import { ARTICLES_QUERY, ARTICLE_QUERY } from './queries';
-import {CREATE_ARTICLE_MUTATION, DELETE_ARTICLE_MUTATION} from './mutation';
+import {
+  CREATE_ARTICLE_MUTATION,
+  DELETE_ARTICLE_MUTATION,
+  UPDATE_ARTICLE_MUTATION,
+} from './mutation';
 
-const fetchArticles = () =>
-  request(ARTICLES_QUERY).then(
-    response => response.data.articles,
-    error => error
-  );
+const graphqlRequest = (gql, key) => args =>
+  request(gql(args)).then(response => response.data[key], error => error);
 
-const fetchArticle = id =>
-  request(ARTICLE_QUERY(id)).then(
-    response => response.data.article,
-    error => error
-  );
-
-const deleteArticle = id =>
-  request(DELETE_ARTICLE_MUTATION(id)).then(
-    response => response.data.deleteArticle,
-    error => error
-  );
-
-const createArticle = article =>
-  request(CREATE_ARTICLE_MUTATION(article)).then(
-    response => response.data.createArticle,
-    error => error
-  );
+const fetchArticles = graphqlRequest(ARTICLES_QUERY, 'articles');
+const fetchArticle = graphqlRequest(ARTICLE_QUERY, 'article');
+const deleteArticle = graphqlRequest(DELETE_ARTICLE_MUTATION, 'deleteArticle');
+const createArticle = graphqlRequest(CREATE_ARTICLE_MUTATION, 'createArticle');
+const updateArticle = graphqlRequest(UPDATE_ARTICLE_MUTATION, 'updateArticle');
 
 export default {
   fetchArticles,
   fetchArticle,
   deleteArticle,
   createArticle,
+  updateArticle,
 };

@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
+import tinycolor from 'tinycolor2';
 import { fromTheme } from '../../../shared/theme';
-import { z2 } from '../../../shared/styles';
+import { flex, z2 } from '../../../shared/styles';
 
 const wrapper = css`
   width: 300px;
@@ -28,9 +29,26 @@ const excerpt = css`
 `;
 
 const author = css`
-  margin-top: 0.5rem;
   font-style: oblique;
-  text-align: right;
+  align-self: flex-end;
+`;
+
+const pusher = css`
+  flex-grow: 999;
+`;
+
+const footer = css`
+  ${flex}
+  margin-top: 0.5rem;
+`;
+
+const icon = css`
+  color: ${fromTheme('primaryColor')};
+  
+  &:hover {
+    color: ${props =>
+      tinycolor(fromTheme('primaryColor')(props)).darken(10).toString()};
+  }
 `;
 
 export default {
@@ -38,4 +56,7 @@ export default {
   title,
   excerpt,
   author,
+  footer,
+  pusher,
+  icon,
 };

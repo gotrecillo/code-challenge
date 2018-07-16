@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { UpdateArticle, NotFound, Spinner } from '../components';
 import { connect } from 'react-redux';
-import { fetchArticle, deleteArticle } from '../actions';
-import { ArticleDetails, NotFound, Spinner } from '../components';
+import { fetchArticle, updateArticle } from '../actions';
 
 const mapStateToProps = state => {
-  const { article, fetching, deleting } = state.article;
+  const { article, fetching } = state.article;
 
-  return { article, fetching, deleting };
+  return { article, fetching };
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchArticle: id => dispatch(fetchArticle.request(id)),
-  deleteArticle: id => dispatch(deleteArticle.request(id)),
+  updateArticle: article => dispatch(updateArticle.request(article)),
 });
 
-class ArticleContainer extends Component {
+class UpdateArticleContainer extends Component {
   static propTypes = {
+    updateArticle: PropTypes.func.isRequired,
+    fetchArticle: PropTypes.func.isRequired,
     article: PropTypes.shape({
       title: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+      id: PropTypes.string.isRequired,
     }),
     fetching: PropTypes.bool.isRequired,
-    deleting: PropTypes.bool.isRequired,
-    fetchArticle: PropTypes.func.isRequired,
-    deleteArticle: PropTypes.func.isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -40,7 +40,7 @@ class ArticleContainer extends Component {
   }
 
   render() {
-    const { fetching, article, deleteArticle, deleting } = this.props;
+    const { updateArticle, fetching, article } = this.props;
 
     if (fetching) {
       return <Spinner />;
@@ -52,14 +52,10 @@ class ArticleContainer extends Component {
       );
     }
 
-    return (
-      <ArticleDetails
-        article={article}
-        deleteArticle={deleteArticle}
-        deleting={deleting}
-      />
-    );
+    return <UpdateArticle updateArticle={updateArticle} article={article} />;
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  UpdateArticleContainer
+);

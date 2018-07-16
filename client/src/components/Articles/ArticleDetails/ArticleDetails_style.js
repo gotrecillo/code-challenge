@@ -31,6 +31,10 @@ const actions = css`
   margin-top: 2rem;
   ${flex}
   justify-content: flex-end;
+
+  & > * {
+    margin-left: 1rem;
+  }
 `;
 
 export default {

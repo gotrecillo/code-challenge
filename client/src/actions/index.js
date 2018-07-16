@@ -11,8 +11,10 @@ import {
   CREATE_ARTICLE_DONE,
   CREATE_ARTICLE_REQUEST,
   CREATE_ARTICLE_ERROR,
+  UPDATE_ARTICLE_DONE,
+  UPDATE_ARTICLE_REQUEST,
+  UPDATE_ARTICLE_ERROR,
 } from './constants';
-
 
 export const fetchArticles = {
   request: () => ({ type: FETCH_ARTICLES_REQUEST }),
@@ -36,4 +38,18 @@ export const createArticle = {
   request: payload => ({ type: CREATE_ARTICLE_REQUEST, payload }),
   done: payload => ({ type: CREATE_ARTICLE_DONE, payload }),
   error: () => ({ type: CREATE_ARTICLE_ERROR }),
+};
+
+export const updateArticle = {
+  request: payload => ({ type: UPDATE_ARTICLE_REQUEST, payload }),
+  done: payload => ({ type: UPDATE_ARTICLE_DONE, payload }),
+  error: () => ({ type: UPDATE_ARTICLE_ERROR }),
+};
+
+export default {
+  fetchArticles,
+  fetchArticle,
+  deleteArticle,
+  createArticle,
+  updateArticle,
 };

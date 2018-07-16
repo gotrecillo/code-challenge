@@ -8,8 +8,11 @@ const Wrapper = styled.div`${styles.wrapper};`;
 const Title = styled.h3`${styles.title};`;
 const Excerpt = styled.p`${styles.excerpt};`;
 const Author = styled.p`${styles.author};`;
+const Footer = styled.div`${styles.footer};`;
+const Pusher = styled.div`${styles.pusher};`;
+const Icon = styled.i`${styles.icon};`;
 
-const ArticleCard = ({ article }) =>
+const ArticleCard = ({ article, navigate }) =>
   <LinkWrap to={`/${article.id}`}>
     <Wrapper>
       <Title>
@@ -18,9 +21,21 @@ const ArticleCard = ({ article }) =>
       <Excerpt>
         {article.excerpt}
       </Excerpt>
-      <Author>
-        {article.author}
-      </Author>
+      <Footer>
+        <Icon
+          className="material-icons"
+          onClick={e => {
+            e.preventDefault();
+            navigate(`/${article.id}/update`);
+          }}
+        >
+          edit
+        </Icon>
+        <Pusher />
+        <Author>
+          {article.author}
+        </Author>
+      </Footer>
     </Wrapper>
   </LinkWrap>;
 
@@ -31,5 +46,6 @@ ArticleCard.propTypes = {
     excerpt: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
   }),
+  navigate: PropTypes.func.isRequired,
 };
 export default ArticleCard;

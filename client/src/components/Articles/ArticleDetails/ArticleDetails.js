@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import styles from './ArticleDetails_style';
 import Button from '../../Button/Button';
+import LinkWrap from '../../LinkWrap/LinkWrap';
 
 const Wrapper = styled.div`${styles.wrapper};`;
 const Title = styled.h3`${styles.title};`;
@@ -24,10 +25,13 @@ const ArticleDetails = ({ article, deleteArticle, deleting }) =>
     <Actions>
       <Button
         variant="danger"
-        label={deleting ? 'Deleting...' :'Delete'}
+        label={deleting ? 'Deleting...' : 'Delete'}
         disabled={deleting}
         onClick={() => deleteArticle(article.id)}
       />
+      <LinkWrap to={`/${article.id}/update`}>
+        <Button label="Update" />
+      </LinkWrap>
     </Actions>
   </Wrapper>;
 

@@ -17,8 +17,7 @@ const Article = mongoose.model('Article', {
 Article.remove({}, (err) => {
   if (!err) {
     _.times(10, () => {
-      const content = `
-${Faker.lorem.paragraphs()}
+      const content = `${Faker.lorem.paragraphs()}
 ${Faker.lorem.paragraphs()}
 ${Faker.lorem.paragraphs()}
 ${Faker.lorem.paragraphs()}

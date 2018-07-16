@@ -9,6 +9,7 @@ import {
   ArticlesContainer,
   ArticleContainer,
   CreateArticleContainer,
+  UpdateArticleContainer,
 } from '../../containers';
 import styles from './App_style';
 import store, { history } from '../../store';
@@ -26,6 +27,7 @@ const App = () =>
             <Switch>
               <Route exact path="/" component={ArticlesContainer} />
               <Route path="/create" component={CreateArticleContainer} />
+              <Route path="/:id/update" component={UpdateArticleContainer} />
               <Route path="/:id" component={ArticleContainer} />
             </Switch>
           </Main>

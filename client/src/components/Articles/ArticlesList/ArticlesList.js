@@ -9,7 +9,7 @@ import Button from '../../Button/Button';
 const Wrapper = styled.div`${styles.wrapper};`;
 const Actions = styled.div`${styles.actions};`;
 
-const ArticlesList = ({ articles }) =>
+const ArticlesList = ({ articles, navigate }) =>
   <Fragment>
     <Actions>
       <LinkWrap to="/create">
@@ -18,13 +18,14 @@ const ArticlesList = ({ articles }) =>
     </Actions>
     <Wrapper>
       {articles.map(article =>
-        <ArticleCard key={article.id} article={article} />
+        <ArticleCard key={article.id} article={article} navigate={navigate} />
       )}
     </Wrapper>
   </Fragment>;
 
 ArticlesList.propTypes = {
   articles: PropTypes.array.isRequired,
+  navigate: PropTypes.func.isRequired,
 };
 
 export default ArticlesList;
